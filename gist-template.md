@@ -219,10 +219,44 @@ x|y
 Disjunction: Matches either "x" or "y". Each component, separated by a pipe (|), is called an alternative. For example, /green|red/ matches "green" in "green apple" and "red" in "red apple".
 
 ### The OR Operator
+The logical OR (||) (logical disjunction) operator for a set of operands is true if and only if one or more of its operands is true. It is typically used with boolean (logical) values. When it is, it returns a Boolean value. However, the || operator actually returns the value of one of the specified operands, so if this operator is used with non-Boolean values, it will return a non-Boolean value.
+
+expr1 || expr2
+If expr1 can be converted to true, returns expr1; else, returns expr2.
+
+If a value can be converted to true, the value is so-called truthy. If a value can be converted to false, the value is so-called falsy.
+
+Examples of expressions that can be converted to false are:
+
+null;
+NaN;
+0;
+empty string ("" or '' or ``);
+undefined.
+Even though the || operator can be used with operands that are not Boolean values, it can still be considered a boolean operator since its return value can always be converted to a boolean primitive. To explicitly convert its return value (or any expression in general) to the corresponding boolean value, use a double NOT operator or the Boolean constructor.
 
 ### Flags
+Regular expressions have optional flags that allow for functionality like global searching and case-insensitive searching. These flags can be used separately or together in any order, and are included as part of the regular expression.
+
+#### Types
+d	Generate indices for substring matches.	hasIndices
+g	Global search.	global
+i	Case-insensitive search.	ignoreCase
+m	Allows ^ and $ to match newline characters.	multiline
+s	Allows . to match newline characters.	dotAll
+u	"Unicode"; treat a pattern as a sequence of Unicode code points.	unicode
+y	Perform a "sticky" search that matches starting at the current position in the target string.	sticky
+
+To include a flag with the regular expression, use this syntax:
+const re = /pattern/flags;
+
 
 ### Character Escapes
+Escape Sequences (\char):
+To match a character having special meaning in regex, you need to use a escape sequence prefix with a backslash (\). E.g., \. matches "."; regex \+ matches "+"; and regex \( matches "(".
+You also need to use regex \\ to match "\" (back-slash).
+Regex recognizes common escape sequences such as \n for newline, \t for tab, \r for carriage-return, \nnn for a up to 3-digit octal number, \xhh for a two-digit hex code, \uhhhh for a 4-digit Unicode, \uhhhhhhhh for a 8-digit Unicode.
+
 
 ## Author
 
